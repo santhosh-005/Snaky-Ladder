@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Game Over</title>
+    <link rel="stylesheet" href="./gameover.css">
+    <link href='https://fonts.googleapis.com/css?family=Rye' rel='stylesheet'>
+    <link href='https://fonts.googleapis.com/css?family=Josefin Sans' rel='stylesheet'>
+</head>
+<body>
+    <div class="wholecontainer">
+        <h1 id="winningmsg"><span id="winner">PLAYER1  </span>WON THE MATCH</h1>
+        <div>
+            <div id="statue-div">
+                <img src="./assets/snake-statue.png" alt=""> 
+                
+                <ul class="winnerslist">
+                    <h2>Top Rankers</h2>
+                    <li>shetty</li>
+                </ul>
+            </div>
+            <img src="./assets/play-again-btn.png" alt="" id="play-again-btn" onclick='playAgainBtn()'>
+        </div>
+    </div>
+
+    <script>
+        function playAgainBtn(){
+            location.href='index.html'
+        }
+    </script>
+</body>
+</html>

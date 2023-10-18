@@ -1,0 +1,205 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body{
+    background: url(./assets/index_bg.jpg);
+    background-size: 100% 100%;   
+    background-repeat: no-repeat;
+    font-family: 'Irish Grover';                                                               
+}
+
+.wholecontainer{
+    height: 100vh;
+    width: 100vw;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    /* border: 2px solid red; */
+}
+
+.namecontainer{
+    height: 420px;
+    width: 680px;
+    /* border: 2px solid red; */
+    background: url(./assets/woodenboard.png);
+    background-repeat: no-repeat;
+    background-size:cover;
+    display: flex;
+    flex-direction: column;
+    justify-content:center;
+    align-items: center;
+}
+
+.namecontainer img{
+    height: 130px;
+    /* border: 2px solid red; */
+}
+
+.namecontainer input{
+    text-align: center;
+    width: 350px;
+    height: 50px;
+    border-radius: 30px;
+    margin-bottom: 20px;
+    font-size:larger;
+    background-color:#524949;
+    color: white;
+    font-weight: bolder;
+    font-family: 'Irish Grover';  
+
+}
+
+h1{
+    text-align: center;
+    letter-spacing:3px;
+
+}           
+
+#play-btn{
+    height: 100px;
+animation: rotate 5s linear infinite;
+}
+
+@keyframes rotate {
+    0%{
+        transform: rotate(0deg);
+    }
+    100%{
+        transform: rotate(360deg);
+    }
+    
+}
+
+
+#instruction{
+    font-size: 2.5em;
+    font-weight: bolder;
+    color:#ffffff;
+    -webkit-text-stroke: 2px black; 
+    text-shadow: 3px 1px green;
+    animation: scaling 2s linear infinite;
+}
+
+
+.playcontainer{
+    height: 100px;
+    width: 650px;
+    /* border: 2px solid green; */
+    display: flex;
+    justify-content:space-around;
+    align-items:center;
+}
+
+#instruction:hover,#play-btn:hover,#wrong-btn:hover{
+    cursor: pointer;
+}
+
+/* instruction page */
+
+#instrutions-page{
+    display: none;
+    position: absolute;
+    height: 100vh;
+    width: 100vw;
+    background-color: rgba(255, 255, 255, 0.582);
+    
+}
+
+#oldchart-div{
+    margin: auto;
+    /* border: 2px solid red; */
+    height: 100vh;
+    width: 100vh;
+}
+
+#oldchart-div img{
+    width:100%;
+    height:100%;
+}
+
+.contents{
+    margin: 100px;
+    width: 65vh;
+    position: absolute;
+    top: 0;
+}
+
+
+.contents h1{
+    margin-bottom: 40px;
+}
+.contents p{
+    font-size: 1.2em;
+    font-family: 'Josefin Sans';
+    text-indent: 30px;
+}
+.contents div{
+    display: flex;
+    align-items: baseline;
+    justify-content: space-around;
+}
+.contents #wrong-btn{
+    height:60px;
+    width:auto;
+    animation: scaling 2s linear infinite;
+}
+
+@keyframes scaling {
+    0%{
+        transform:scale(1);
+    }
+    50%{
+        transform:scale(1.2);
+    }
+    100%{
+        transform:scale(1);
+    }
+}
+
+
+@media screen and (max-width:600px) {
+    body{
+        background: url(./assets/index_bg.jpg);
+        background-size: 100% 100%;   
+        background-repeat: no-repeat;
+    }
+   
+    .namecontainer{
+        padding: 15px;
+        height: auto;
+        width:100%;
+        background-size: 100% 100%;
+        margin-bottom: 30px;
+    }
+    .namecontainer img{
+        height: 80px;
+    }
+    .namecontainer input{
+        height: 30px;
+        width: 80%;
+    }
+    .namecontainer h1{
+        font-size: 25px;
+    }
+    .playcontainer{
+        width: 100%;
+        flex-direction: column;
+    }
+
+    .playcontainer span{
+        margin-bottom: 20px;
+    }
+
+    .contents{
+        margin:0;
+        font-size:.6em;
+        /* border: 2px solid red; */
+        padding: 70px;
+        width: 100vw;
+
+    }
+}

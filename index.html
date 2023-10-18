@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Snaky ladder</title>
+    <link rel="stylesheet" href="./index.css">
+    <link href='https://fonts.googleapis.com/css?family=Irish Grover' rel='stylesheet'>
+    <link href='https://fonts.googleapis.com/css?family=Josefin Sans' rel='stylesheet'>
+</head>
+<body>
+    <div class="wholecontainer">
+        <div class="namecontainer">
+            <img src="./assets/LOGO.png" alt="">
+            <h1>PLAYER 1</h1>
+            <input type="text" placeholder="Nickname 1" id="name1" required>
+            <h1>PLAYER 2</h1>
+            <input type="text" placeholder="Nickname 2" id="name2" required>
+        </div>
+        <div class="playcontainer">
+            <span id="instruction">Instructions</span>
+            <img src="./assets/playBtn.png" alt="" id="play-btn" type="submit">   
+        </div>
+
+        <div id="instrutions-page">
+            <div id="oldchart-div">
+                <img src="./assets/oldchart.png" alt="">
+                <div class="contents">
+                    <div>
+                        <h1>Instructions</h1>
+                        <img src="./assets/wrong-btn.png" alt="" id="wrong-btn">
+                    </div>
+                        <p>Snake and Ladder is a classic board game for 2 or more players. Players take turn   rolling a die and moving their game piece along a numbered grid.</p><br>
+                        <p>
+                        The goal is to reach the last square, usually numbered 100, by exact count. If a player lands on a square with a ladder, they climb to a higher-numbered square. If they land on a square with a snake, they slide down to a lower-numbered square.</p> <br>
+                        <p> The game continues until one player reaches the final square, making him as the winner.</p>
+                </div>
+
+            </div>
+        </div>
+    </div>
+
+    <script src="./index.js"></script>
+</body>
+</html>
