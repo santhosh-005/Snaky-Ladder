@@ -10,7 +10,7 @@
 </head>
 <body>
     <div class="wholecontainer">
-        <h1 id="winningmsg"><span id="winner">PLAYER1  </span>WON THE MATCH</h1>
+        <h1 id="winningmsg"><span id="winner">PLAYER1</span>   WON THE MATCH</h1>
         <div>
             <div id="statue-div">
                 <img src="./assets/snake-statue.png" alt=""> 
@@ -28,6 +28,20 @@
         function playAgainBtn(){
             location.href='index.html'
         }
+
+       
+        let playerWon=localStorage.getItem('winner');
+        let getPlayerName=localStorage.getItem(playerWon);
+        const winner=document.getElementById("winner").innerText=getPlayerName;
+
+        let winnersList=document.getElementsByClassName('winnerslist')
+        let newWinner=document.createElement("li")
+        newWinner.innerText=getPlayerName;
+
+        if(winnersList.length>3){
+            winnersList.pop();
+        }
+
     </script>
 </body>
 </html>
