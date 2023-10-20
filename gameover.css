@@ -112,4 +112,8 @@ h4{
     #play-again-btn{
         height: 60px;
     }
+
+    h4{
+        font-size: 20px;
+    }
 }
