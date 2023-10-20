@@ -106,12 +106,12 @@ body{
         border-radius:8px;
     }
     .boardpng{
-        height:60vh;
+        height:50vh;
         width: auto;
     }
     #game-board-div{
-        height:60vh;
-        width: 60vh; 
+        height:50vh;
+        width: 50vh; 
         border: 2px solid yellow;  
     }
     #player-coin-2{
