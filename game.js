@@ -5,7 +5,15 @@ const diceImg2=document.getElementById('dice-img2');
 
 // Audio files
 
-const diceSound=new Audio("assets/dice-sound.mp3")
+const diceSound=new Audio("assets/dice-sound.mp3");
+const bgMusic=new Audio("assets/Bg.mp3");
+const nextPageSound=new Audio("assets/level-complete.mp3");
+const rewardSound=new Audio("assets/bite-ladder.wav")
+
+nextPageSound.play();
+bgMusic.loop=true;
+bgMusic.play();
+bgMusic.volume=0.3;
 
 // variables
 
@@ -32,25 +40,64 @@ const snakyLadderPlaces = {
 let playerPositions=[0,0]
 let number=0;
 
+let playerMoves=[0,0];
+
 let currentPlayer=1;
 let diceImg;
 
 let value;
 
-
 // winning function
 
-function winnerFunction(winner){
-    localStorage.setItem('winner','player'+winner);
-    window.location.href='gameover.html';
+function winnerFunction(nowPlayer) {
+    let winner;
+    if (nowPlayer == 1) {
+        winner = localStorage.getItem('player1');
+    } else {
+        winner = localStorage.getItem('player2');
+    }
+    localStorage.removeItem('player1');
+    localStorage.removeItem('player2');
+
+    let winnersList = [];
+    let winingscoreList = [];
+
+    // Push the existing winners and scores into new arrays
+    if (localStorage.getItem('winners')) {
+        winnersList.push(...JSON.parse(localStorage.getItem('winners')));
+    }
+
+    if (localStorage.getItem('winnerscore')) {
+        winingscoreList.push(...JSON.parse(localStorage.getItem('winnerscore')));
+    }
+
+    // Push the current winner and score
+   if(winner){ winnersList.push(winner.toString());}
+    winingscoreList.push(playerMoves[nowPlayer - 1].toString());
+
+    localStorage.setItem('winners', JSON.stringify(winnersList));
+    localStorage.setItem('winnerscore', JSON.stringify(winingscoreList));
+
+    window.location.href = 'gameover.html';
 }
 
 
+
+// setting player coin size according to the screen size
+
+function mediaQuery(image){
+    const mediaQuery = window.matchMedia('(max-width: 500px)');
+    if(mediaQuery.matches){
+    image.style.height='30px'
+    image.style.margin='3px'
+    }
+}
 // Snakes and ladder handling function
 
 function snakesAndLadder(currentPlayer,image){
      value=playerPositions[(3-currentPlayer)-1];
     if(snakyLadderPlaces[value]){
+        rewardSound.play();
         document.getElementById('cell-'+snakyLadderPlaces[value]).appendChild(image);
         let containDiv=document.getElementById('cell-'+(playerPositions[(3-currentPlayer)-1]));
         const Element = containDiv.querySelector("img");
@@ -168,6 +215,8 @@ for (let row = 1; row <= rows; row++) {
 // coinMoving function
 
 function coinMoving(randomNumber,currentPlayer){
+
+    playerMoves[(3-currentPlayer)-1]+=1;
    
     if(number>=2){
     let currentDiv=document.getElementById('cell-'+(playerPositions[(3-currentPlayer)-1]));
@@ -180,12 +229,15 @@ function coinMoving(randomNumber,currentPlayer){
     let image=document.createElement("img");
     image.style.height='52px';
     image.classList.add('coins');
-    image.classList.add('coins');
     let nowPlayer=3-currentPlayer; 
     if(nowPlayer==1){
         image.src="assets/redcoin-rev.png";
+        image.setAttribute('id','redcoin-coin');
+        mediaQuery(image)
     }if(nowPlayer==2){
         image.src="assets/blackcoin-rev.png";
+        image.setAttribute('id','blackcoin-coin');
+        mediaQuery(image)
     }
     var count1=playerPositions[nowPlayer-1];
     playerPositions[nowPlayer-1]+=randomNumber;
@@ -196,7 +248,8 @@ function coinMoving(randomNumber,currentPlayer){
             if(count1<=count2){
                 document.getElementById('cell-'+count1).appendChild(image);
             setTimeout(smoothMove,350)
-            }else{
+            }
+            else{
                 snakesAndLadder(currentPlayer,image)
             }
         }
@@ -206,6 +259,9 @@ function coinMoving(randomNumber,currentPlayer){
         if(playerPositions[nowPlayer-1]>=100){
             winnerFunction(nowPlayer);
         }
-    // setTimeout(snakesAndLadder(currentPlayer,image),1000);
+
 }   
+
+
+// localStorage.clear();
 

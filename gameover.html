@@ -4,6 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Game Over</title>
+    <link rel="icon" type="image/x-icon" href="assets/title-logo.png">
     <link rel="stylesheet" href="./gameover.css">
     <link href='https://fonts.googleapis.com/css?family=Rye' rel='stylesheet'>
     <link href='https://fonts.googleapis.com/css?family=Josefin Sans' rel='stylesheet'>
@@ -15,33 +16,48 @@
             <div id="statue-div">
                 <img src="./assets/snake-statue.png" alt=""> 
                 
-                <ul class="winnerslist">
-                    <h2>Top Rankers</h2>
-                    <li>shetty</li>
-                </ul>
+                <div id="winnerslist">
+                    <h1>Top Rankers</h1>
+                </div>
             </div>
             <img src="./assets/play-again-btn.png" alt="" id="play-again-btn" onclick='playAgainBtn()'>
         </div>
     </div>
 
     <script>
+    const cheerSound=new Audio("assets/cheer.mp3")
+    const clickSound=new Audio("assets/click-index.mp3")
+
+    cheerSound.play();
+
+    document.body.addEventListener('click',()=>{
+        clickSound.pause();
+        clickSound.currentTime=0;
+        clickSound.play()
+})
+
+
+
         function playAgainBtn(){
             location.href='index.html'
         }
 
-       
-        let playerWon=localStorage.getItem('winner');
-        let getPlayerName=localStorage.getItem(playerWon);
-        const winner=document.getElementById("winner").innerText=getPlayerName;
+        const winners = JSON.parse(localStorage.getItem('winners'));
+        const scores = JSON.parse(localStorage.getItem('winnerscore'));
 
-        let winnersList=document.getElementsByClassName('winnerslist')
-        let newWinner=document.createElement("li")
-        newWinner.innerText=getPlayerName;
+        document.getElementById("winner").innerText=winners[winners.length-1]
 
-        if(winnersList.length>3){
-            winnersList.pop();
-        }
 
+        const leaderboard = winners.map((name, index) => ({ name, score: scores[index] }));
+
+            // Combine the winners and scores into an array of objects
+        leaderboard.sort((a, b) => a.score - b.score);
+
+        for (let i = 0; i < 3 && i < leaderboard.length; i++) {
+            const entry = leaderboard[i];
+            document.getElementById('winnerslist').innerHTML+=`<h4>${entry.name} ${entry.score}-moves</h4>`
+    }
+        
     </script>
 </body>
 </html>

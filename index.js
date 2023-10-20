@@ -1,4 +1,11 @@
+const clickSound=new Audio('assets/click-index.mp3')
 
+
+document.body.addEventListener('click',()=>{
+    clickSound.pause();
+    clickSound.currentTime=0;
+    clickSound.play()
+})
 
 document.getElementById('instruction').addEventListener('click',()=>{
     document.getElementById('instrutions-page').style.display='inherit'

@@ -6,7 +6,7 @@
 
 body{
     background: url(./assets/gameBG.jpg);
-    background-size: 100%;   
+    background-size: 100% 100%;   
     background-repeat: no-repeat;
 }
 
@@ -37,16 +37,15 @@ body{
 
 
 /* Game board */
-
+/* 
 #game-board-png{
-    /* border: 2px solid red; */
     height: 100vh;
     width: 100vh;
     
-}
+} */
 
 .boardpng{
-    width: 100%;
+    width: 100vh;
 }
 
 
@@ -93,3 +92,30 @@ body{
       }
    }
 
+
+@media screen and (max-width:500px){
+    .wholecontainer{
+        flex-direction: column;
+    } 
+    .player-coin{
+        flex-direction: row;
+    }
+    #redcoin, #blackcoin, #dice-div1, #dice-div2, #dice-img1, #dice-img2{
+        height:15vh;
+        width: auto;
+        border-radius:8px;
+    }
+    .boardpng{
+        height:60vh;
+        width: auto;
+    }
+    #game-board-div{
+        height:60vh;
+        width: 60vh; 
+        border: 2px solid yellow;  
+    }
+    #player-coin-2{
+        flex-direction: row-reverse;
+    }
+
+}
