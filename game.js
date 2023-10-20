@@ -42,6 +42,8 @@ let number=0;
 
 let playerMoves=[0,0];
 
+
+
 let currentPlayer=1;
 let diceImg;
 
@@ -127,40 +129,40 @@ calling();
 // dice handling and random number generating function
 
 function diceHandling(){
-    var randomNumber=generateRandomNumbers(1,6);
-    console.log(randomNumber)
 
-    diceImg.src="assets/DiceRolling.gif"
-    diceSound.pause();
-    diceSound.currentTime=0;
-    diceSound.play();
+        var randomNumber=generateRandomNumbers(1,6);
+        console.log(randomNumber)
 
-    setTimeout(function showRandomNumberOnDice(){
-        
+        diceImg.src="assets/DiceRolling.gif"
+        diceSound.pause();
+        diceSound.currentTime=0;
+        diceSound.play();
 
-        if(randomNumber==1){
-            diceImg.src="assets/dice-numer-1.png"
-        }else if(randomNumber==2){
-            diceImg.src="assets/dice-numer-2.png"
-        }else if(randomNumber==3){
-            diceImg.src="assets/dice-numer-3.png"
-        }else if(randomNumber==4){
-            diceImg.src="assets/dice-numer-4.png"
-        }else if(randomNumber==5){
-            diceImg.src="assets/dice-numer-5.png"
-        }else if(randomNumber==6){
-            diceImg.src="assets/dice-numer-6.png"
-        }
+        setTimeout(function showRandomNumberOnDice(){
+            
 
-        
+            if(randomNumber==1){
+                diceImg.src="assets/dice-numer-1.png"
+            }else if(randomNumber==2){
+                diceImg.src="assets/dice-numer-2.png"
+            }else if(randomNumber==3){
+                diceImg.src="assets/dice-numer-3.png"
+            }else if(randomNumber==4){
+                diceImg.src="assets/dice-numer-4.png"
+            }else if(randomNumber==5){
+                diceImg.src="assets/dice-numer-5.png"
+            }else if(randomNumber==6){
+                diceImg.src="assets/dice-numer-6.png"
+            }
 
-        
-        currentPlayer=3-currentPlayer; 
-        calling();
-        coinMoving(randomNumber,currentPlayer);
-        
+            
+            currentPlayer=3-currentPlayer; 
+            calling();
+            coinMoving(randomNumber,currentPlayer);
+            
 
-    },1000)
+        },1000)
+    
 }
 
 function generateRandomNumbers(min,max){
